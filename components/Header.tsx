@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 const Header: React.FC = () => {
@@ -10,23 +11,42 @@ const Header: React.FC = () => {
   return (
     <header className="flex items-center justify-between p-4 bg-gray-100">
       {/* Left Side: Logo or Text */}
-      <div className="text-2xl font-bold">
-        <span>Your Logo</span>
+      <div className="flex flex-col items-center">
+        <div className="flex items-center space-x-2 mb-1">
+          <div className="flex items-center justify-center w-12 h-12 bg-blue-500 text-white rounded-full text-3xl font-bold">
+            H
+          </div>
+          <div className="text-2xl font-bold">
+            <span>Hobbycue</span>
+          </div>
+        </div>
+        <div className="text-sm text-gray-600 ml-8">
+          <span>Your Hobby, Your Community</span>
+        </div>
       </div>
 
       {/* Center: Search Bar */}
-      <div className="flex-grow mx-8">
+      <div className="relative flex-grow mx-8 flex items-center">
         <input
           type="text"
           placeholder="Search..."
-          className="w-full p-2 border border-gray-300 rounded-lg"
+          className="w-full p-2 border border-gray-300 rounded-lg pr-16 h-10" // Adjusted padding-right to make space for the icon
         />
+        <div className="absolute right-0 top-0 flex items-center justify-center w-12 h-10 bg-purple-500 rounded-r-lg">
+          <Image
+            src="/icons/loupe.png"
+            alt="Search Icon"
+            width={24}
+            height={24}
+          />
+        </div>
       </div>
 
-      {/* Right Side: Links and Buttons */}
+      {/* Right Side: Icons, Dropdowns, and Buttons */}
       <div className="flex items-center space-x-6">
         {/* Explore Dropdown */}
-        <div className="relative">
+        <div className="relative flex items-center space-x-2">
+          <Image src="/icons/compass.png" alt="Explore Icon" width={24} height={24} />
           <button
             onClick={() => setShowExploreDropdown(!showExploreDropdown)}
             className="flex items-center space-x-1 text-lg"
@@ -48,7 +68,7 @@ const Header: React.FC = () => {
             </svg>
           </button>
           {showExploreDropdown && (
-            <div className="absolute right-0 mt-2 bg-white border rounded-lg shadow-lg w-40">
+            <div className="absolute left-0 top-full mt-2 bg-white border rounded-lg shadow-lg w-40">
               <Link href="/explore/option1">
                 <div className="block px-4 py-2 hover:bg-gray-100">Option 1</div>
               </Link>
@@ -60,7 +80,8 @@ const Header: React.FC = () => {
         </div>
 
         {/* Hobbies Dropdown */}
-        <div className="relative">
+        <div className="relative flex items-center space-x-2">
+          <Image src="/icons/star.png" alt="Hobbies Icon" width={24} height={24} />
           <button
             onClick={() => setShowHobbiesDropdown(!showHobbiesDropdown)}
             className="flex items-center space-x-1 text-lg"
@@ -82,7 +103,7 @@ const Header: React.FC = () => {
             </svg>
           </button>
           {showHobbiesDropdown && (
-            <div className="absolute right-0 mt-2 bg-white border rounded-lg shadow-lg w-40">
+            <div className="absolute left-0 top-full mt-2 bg-white border rounded-lg shadow-lg w-40">
               <Link href="/hobbies/option1">
                 <div className="block px-4 py-2 hover:bg-gray-100">Option 1</div>
               </Link>
@@ -93,18 +114,20 @@ const Header: React.FC = () => {
           )}
         </div>
 
-        {/* Other Buttons */}
-        <Link href="/bookmarks" className="text-lg">
-          Bookmarks
+        {/* Other Icons */}
+        <Link href="/bookmarks" className="flex items-center">
+          <Image src="/icons/bookmark.png" alt="Bookmarks Icon" width={24} height={24} />
         </Link>
-        <Link href="/notifications" className="text-lg">
-          Notifications
+        <Link href="/notifications" className="flex items-center">
+          <Image src="/icons/bell.png" alt="Notifications Icon" width={24} height={24} />
         </Link>
-        <Link href="/cart" className="text-lg">
-          Cart
+        <Link href="/cart" className="flex items-center">
+          <Image src="/icons/grocery-store.png" alt="Cart Icon" width={24} height={24} />
         </Link>
-        <Link href="/signin" className="text-lg">
-          Sign In
+
+        {/* Sign In Button */}
+        <Link href="/signin" className="relative block w-auto px-6 py-3 overflow-hidden text-base font-semibold text-center text-gray-800 rounded-lg bg-gray-50 hover:text-black hover:bg-white">
+          <span className="relative z-10">Sign In</span>
         </Link>
       </div>
     </header>
