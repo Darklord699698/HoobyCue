@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-
+//all errors are done 
 const Header: React.FC = () => {
   const [showExploreDropdown, setShowExploreDropdown] = useState(false);
   const [showHobbiesDropdown, setShowHobbiesDropdown] = useState(false);
