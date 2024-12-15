@@ -342,7 +342,7 @@ export default function Home() {
     <div className="flex items-center space-x-2">
       {/* Image in a circle */}
       <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-white">
-        <img
+        <Image
           src="/images/deadpool.png"
           alt="Audio Icon"
           className="w-full h-full object-cover"
