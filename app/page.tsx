@@ -83,7 +83,7 @@ export default function Home() {
   function handleBoxAction(id: number): void {
     throw new Error("Function not implemented.");
   }
-
+//start
   return (
     <main className="flex min-h-screen flex-col p-0 bg-gray-100">
   <div className="w-full max-w-7xl mx-auto flex flex-col items-center px-8 py-16">
