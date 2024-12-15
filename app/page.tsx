@@ -80,6 +80,10 @@ export default function Home() {
     setIsLoggedIn(true);
   };
 
+  function handleBoxAction(id: number): void {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <main className="flex min-h-screen flex-col p-0 bg-gray-100">
   <div className="w-full max-w-7xl mx-auto flex flex-col items-center px-8 py-16">
@@ -88,10 +92,10 @@ export default function Home() {
         Explore Your Hobby or Passion
       </h1>
       <p className="text-lg sm:text-xl text-gray-700">
-        Dive into your hobbies or passions with our platform. Whether you're
+        Dive into your hobbies or passions with our platform. Whether you are
         looking to explore
         <br />
-        new interests or connect with like-minded individuals, we've got
+        new interests or connect with like-minded individuals, we have got
         something for everyone.
         <br />
         Explore a world of opportunities and find what truly excites you.
@@ -357,7 +361,7 @@ export default function Home() {
 {/* New Section with Large Image and Text */}
 <section className="relative w-full mt-16">
   {/* Large Image */}
-  <img
+  <Image
     src="/images/lastimage.jpg" // Replace with your image path
     alt="Large Image"
     className="w-full h-full object-cover rounded-lg"
