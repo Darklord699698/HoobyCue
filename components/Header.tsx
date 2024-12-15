@@ -1,13 +1,16 @@
 "use client";
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
+import React, { useState } from "react";
+import Image from "next/image";
+import { useUser, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 const Header: React.FC = () => {
   const [showExploreDropdown, setShowExploreDropdown] = useState(false);
   const [showHobbiesDropdown, setShowHobbiesDropdown] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
+
+  const { isSignedIn } = useUser(); // Using Clerk's useUser hook
 
   return (
     <header className="flex flex-col md:flex-row items-center justify-between p-4 bg-gray-100 relative">
@@ -31,28 +34,48 @@ const Header: React.FC = () => {
             </button>
             <div className="flex flex-col space-y-4">
               <Link href="/explore/option1">
-                <div className="block px-4 py-2 hover:bg-gray-100">Explore Option 1</div>
+                <div className="block px-4 py-2 hover:bg-gray-100">
+                  Explore Option 1
+                </div>
               </Link>
               <Link href="/explore/option2">
-                <div className="block px-4 py-2 hover:bg-gray-100">Explore Option 2</div>
+                <div className="block px-4 py-2 hover:bg-gray-100">
+                  Explore Option 2
+                </div>
               </Link>
               <Link href="/hobbies/option1">
-                <div className="block px-4 py-2 hover:bg-gray-100">Hobbies Option 1</div>
+                <div className="block px-4 py-2 hover:bg-gray-100">
+                  Hobbies Option 1
+                </div>
               </Link>
               <Link href="/hobbies/option2">
-                <div className="block px-4 py-2 hover:bg-gray-100">Hobbies Option 2</div>
+                <div className="block px-4 py-2 hover:bg-gray-100">
+                  Hobbies Option 2
+                </div>
               </Link>
               <Link href="/bookmarks" className="flex items-center">
-                <Image src="/icons/bookmark.png" alt="Bookmarks Icon" width={24} height={24} />
+                <Image
+                  src="/icons/bookmark.png"
+                  alt="Bookmarks Icon"
+                  width={24}
+                  height={24}
+                />
                 <span className="ml-2">Bookmarks</span>
               </Link>
               <Link href="/cart" className="flex items-center">
-                <Image src="/icons/grocery-store.png" alt="Cart Icon" width={24} height={24} />
+                <Image
+                  src="/icons/grocery-store.png"
+                  alt="Cart Icon"
+                  width={24}
+                  height={24}
+                />
                 <span className="ml-2">Cart</span>
               </Link>
-              <Link href="/signin" className="flex items-center">
-                <span className="ml-2">Sign In</span>
-              </Link>
+              <SignedOut>
+                <Link href="/signin" className="flex items-center">
+                  <span className="ml-2">Sign In</span>
+                </Link>
+              </SignedOut>
             </div>
           </div>
         </div>
@@ -70,7 +93,7 @@ const Header: React.FC = () => {
               <span>Hobbycue</span>
             </div>
           </div>
-          <div className="flex flex-col ml-2"> {/* Adjust margin-left here */}
+          <div className="flex flex-col ml-2">
             <div className="text-xs text-gray-600">
               <span>Your Hobby, Your Community</span>
             </div>
@@ -91,7 +114,12 @@ const Header: React.FC = () => {
             </div>
           </div>
           <Link href="/notifications" className="flex items-center">
-            <Image src="/icons/bell.png" alt="Notifications Icon" width={24} height={24} />
+            <Image
+              src="/icons/bell.png"
+              alt="Notifications Icon"
+              width={24}
+              height={24}
+            />
           </Link>
         </div>
 
@@ -107,7 +135,7 @@ const Header: React.FC = () => {
                 <span>Hobbycue</span>
               </div>
             </div>
-            <div className="text-xs text-gray-600 mt-1 ml-2"> {/* Adjust margin-left and margin-top here */}
+            <div className="text-xs text-gray-600 mt-1 ml-2">
               <span>Your Hobby, Your Community</span>
             </div>
           </div>
@@ -133,7 +161,12 @@ const Header: React.FC = () => {
           <div className="flex items-center space-x-6">
             {/* Explore Dropdown */}
             <div className="relative flex items-center space-x-2">
-              <Image src="/icons/compass.png" alt="Explore Icon" width={24} height={24} />
+              <Image
+                src="/icons/compass.png"
+                alt="Explore Icon"
+                width={24}
+                height={24}
+              />
               <button
                 onClick={() => setShowExploreDropdown(!showExploreDropdown)}
                 className="flex items-center space-x-1 text-lg"
@@ -157,10 +190,14 @@ const Header: React.FC = () => {
               {showExploreDropdown && (
                 <div className="absolute left-0 top-full mt-2 bg-white border rounded-lg shadow-lg w-40">
                   <Link href="/explore/option1">
-                    <div className="block px-4 py-2 hover:bg-gray-100">Option 1</div>
+                    <div className="block px-4 py-2 hover:bg-gray-100">
+                      Option 1
+                    </div>
                   </Link>
                   <Link href="/explore/option2">
-                    <div className="block px-4 py-2 hover:bg-gray-100">Option 2</div>
+                    <div className="block px-4 py-2 hover:bg-gray-100">
+                      Option 2
+                    </div>
                   </Link>
                 </div>
               )}
@@ -168,7 +205,12 @@ const Header: React.FC = () => {
 
             {/* Hobbies Dropdown */}
             <div className="relative flex items-center space-x-2">
-              <Image src="/icons/star.png" alt="Hobbies Icon" width={24} height={24} />
+              <Image
+                src="/icons/star.png"
+                alt="Hobbies Icon"
+                width={24}
+                height={24}
+              />
               <button
                 onClick={() => setShowHobbiesDropdown(!showHobbiesDropdown)}
                 className="flex items-center space-x-1 text-lg"
@@ -192,30 +234,30 @@ const Header: React.FC = () => {
               {showHobbiesDropdown && (
                 <div className="absolute left-0 top-full mt-2 bg-white border rounded-lg shadow-lg w-40">
                   <Link href="/hobbies/option1">
-                    <div className="block px-4 py-2 hover:bg-gray-100">Option 1</div>
+                    <div className="block px-4 py-2 hover:bg-gray-100">
+                      Option 1
+                    </div>
                   </Link>
                   <Link href="/hobbies/option2">
-                    <div className="block px-4 py-2 hover:bg-gray-100">Option 2</div>
+                    <div className="block px-4 py-2 hover:bg-gray-100">
+                      Option 2
+                    </div>
                   </Link>
                 </div>
               )}
             </div>
 
-            {/* Other Icons */}
-            <Link href="/bookmarks" className="flex items-center">
-              <Image src="/icons/bookmark.png" alt="Bookmarks Icon" width={24} height={24} />
-            </Link>
-            <Link href="/notifications" className="flex items-center">
-              <Image src="/icons/bell.png" alt="Notifications Icon" width={24} height={24} />
-            </Link>
-            <Link href="/cart" className="flex items-center">
-              <Image src="/icons/grocery-store.png" alt="Cart Icon" width={24} height={24} />
-            </Link>
+            {/* User Button */}
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
 
-            {/* Sign In Button */}
-            <Link href="/signin" className="relative block w-auto px-6 py-3 overflow-hidden text-base font-semibold text-center text-gray-800 rounded-lg bg-gray-50 hover:text-black hover:bg-white">
-              <span className="relative z-10">Sign In</span>
-            </Link>
+            {/* Sign In */}
+            <SignedOut>
+              <Link href="/signin" className="flex items-center text-lg">
+                <span>Sign In</span>
+              </Link>
+            </SignedOut>
           </div>
         </div>
       </div>
