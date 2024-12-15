@@ -345,6 +345,8 @@ export default function Home() {
         <Image
           src="/images/deadpool.png"
           alt="Audio Icon"
+          width={100}
+          height={100}
           className="w-full h-full object-cover"
         />
       </div>
@@ -364,6 +366,8 @@ export default function Home() {
   <Image
     src="/images/lastimage.jpg" // Replace with your image path
     alt="Large Image"
+    width={2000}
+    height={2000}
     className="w-full h-full object-cover rounded-lg"
   />
 
